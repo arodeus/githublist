@@ -11,12 +11,22 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // load custom application properties
+        GHLDownloadManager.sharedInstance.loadDownloadManagerProperties()
+        
+        if let navigationController = self.window?.rootViewController as? UINavigationController {
+            if let vc = navigationController.topViewController {
+                if vc is ViewController {
+                    (vc as! ViewController).managedObjectContext = self.persistentContainer.viewContext
+                }
+            }
+        }
+        
         return true
     }
 

@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7733FA701EAB38C400BEE43A /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7733FA6F1EAB38C400BEE43A /* SwiftyJSON.swift */; };
+		7733FA721EAB397E00BEE43A /* GHLDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7733FA711EAB397E00BEE43A /* GHLDownloadManager.swift */; };
+		777F731C1EAB3D5700FF330A /* ViewController+DataManipulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777F731B1EAB3D5700FF330A /* ViewController+DataManipulation.swift */; };
+		777F731E1EAB3DD600FF330A /* GHLDownloadManager+FileManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777F731D1EAB3DD600FF330A /* GHLDownloadManager+FileManagement.swift */; };
+		777F73211EAB507A00FF330A /* GHLItemDetails+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777F731F1EAB507A00FF330A /* GHLItemDetails+CoreDataClass.swift */; };
+		777F73221EAB507A00FF330A /* GHLItemDetails+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777F73201EAB507A00FF330A /* GHLItemDetails+CoreDataProperties.swift */; };
+		77A6FC911EAB582F009261A4 /* ViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A6FC901EAB582F009261A4 /* ViewController+TableView.swift */; };
+		77A6FC931EAB5EC6009261A4 /* ViewController+NSFetchedResultsControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A6FC921EAB5EC6009261A4 /* ViewController+NSFetchedResultsControllerDelegate.swift */; };
 		77F2A7071EAA53AC003C401F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F2A7061EAA53AC003C401F /* AppDelegate.swift */; };
 		77F2A7091EAA53AC003C401F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77F2A7081EAA53AC003C401F /* ViewController.swift */; };
 		77F2A70C1EAA53AC003C401F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77F2A70A1EAA53AC003C401F /* Main.storyboard */; };
@@ -35,6 +43,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7733FA6F1EAB38C400BEE43A /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		7733FA711EAB397E00BEE43A /* GHLDownloadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GHLDownloadManager.swift; path = MWGitHubList/Libraries/GHLDownloadManager.swift; sourceTree = "<group>"; };
+		777F731B1EAB3D5700FF330A /* ViewController+DataManipulation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ViewController+DataManipulation.swift"; path = "Core/ViewController+DataManipulation.swift"; sourceTree = "<group>"; };
+		777F731D1EAB3DD600FF330A /* GHLDownloadManager+FileManagement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "GHLDownloadManager+FileManagement.swift"; path = "MWGitHubList/Libraries/GHLDownloadManager+FileManagement.swift"; sourceTree = "<group>"; };
+		777F731F1EAB507A00FF330A /* GHLItemDetails+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "GHLItemDetails+CoreDataClass.swift"; path = "MWGitHubList/DBObjects/GHLItemDetails+CoreDataClass.swift"; sourceTree = "<group>"; };
+		777F73201EAB507A00FF330A /* GHLItemDetails+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "GHLItemDetails+CoreDataProperties.swift"; path = "MWGitHubList/DBObjects/GHLItemDetails+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		77A6FC901EAB582F009261A4 /* ViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ViewController+TableView.swift"; path = "Core/ViewController+TableView.swift"; sourceTree = "<group>"; };
+		77A6FC921EAB5EC6009261A4 /* ViewController+NSFetchedResultsControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ViewController+NSFetchedResultsControllerDelegate.swift"; path = "Core/ViewController+NSFetchedResultsControllerDelegate.swift"; sourceTree = "<group>"; };
 		77F2A7031EAA53AC003C401F /* MWGitHubList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MWGitHubList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77F2A7061EAA53AC003C401F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77F2A7081EAA53AC003C401F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +92,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		772FB7E81EAB370E00928A4A /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				7733FA6D1EAB38C400BEE43A /* SwiftyJSON */,
+			);
+			name = Vendors;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		7733FA541EAB37D400BEE43A /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				7733FA711EAB397E00BEE43A /* GHLDownloadManager.swift */,
+				777F731D1EAB3DD600FF330A /* GHLDownloadManager+FileManagement.swift */,
+			);
+			name = Libraries;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		7733FA6D1EAB38C400BEE43A /* SwiftyJSON */ = {
+			isa = PBXGroup;
+			children = (
+				7733FA6F1EAB38C400BEE43A /* SwiftyJSON.swift */,
+			);
+			name = SwiftyJSON;
+			path = MWGitHubList/Vendors/SwiftyJSON;
+			sourceTree = "<group>";
+		};
+		777F731A1EAB3D1D00FF330A /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				77F2A7081EAA53AC003C401F /* ViewController.swift */,
+				777F731B1EAB3D5700FF330A /* ViewController+DataManipulation.swift */,
+				77A6FC901EAB582F009261A4 /* ViewController+TableView.swift */,
+				77A6FC921EAB5EC6009261A4 /* ViewController+NSFetchedResultsControllerDelegate.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		777F73231EAB508100FF330A /* DBObjects */ = {
+			isa = PBXGroup;
+			children = (
+				777F731F1EAB507A00FF330A /* GHLItemDetails+CoreDataClass.swift */,
+				777F73201EAB507A00FF330A /* GHLItemDetails+CoreDataProperties.swift */,
+			);
+			name = DBObjects;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		77F2A6FA1EAA53AC003C401F = {
 			isa = PBXGroup;
 			children = (
@@ -99,11 +164,14 @@
 		77F2A7051EAA53AC003C401F /* MWGitHubList */ = {
 			isa = PBXGroup;
 			children = (
+				777F73231EAB508100FF330A /* DBObjects */,
+				7733FA541EAB37D400BEE43A /* Libraries */,
+				772FB7E81EAB370E00928A4A /* Vendors */,
+				777F731A1EAB3D1D00FF330A /* Core */,
 				77F2A7061EAA53AC003C401F /* AppDelegate.swift */,
-				77F2A7081EAA53AC003C401F /* ViewController.swift */,
 				77F2A70A1EAA53AC003C401F /* Main.storyboard */,
-				77F2A7101EAA53AC003C401F /* Assets.xcassets */,
 				77F2A7121EAA53AC003C401F /* LaunchScreen.storyboard */,
+				77F2A7101EAA53AC003C401F /* Assets.xcassets */,
 				77F2A7151EAA53AC003C401F /* Info.plist */,
 				77F2A70D1EAA53AC003C401F /* MWGitHubList.xcdatamodeld */,
 			);
@@ -198,6 +266,11 @@
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = W96J5Z5ZD2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
 					};
 					77F2A7191EAA53AD003C401F = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -265,9 +338,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7733FA721EAB397E00BEE43A /* GHLDownloadManager.swift in Sources */,
+				777F731E1EAB3DD600FF330A /* GHLDownloadManager+FileManagement.swift in Sources */,
+				77A6FC931EAB5EC6009261A4 /* ViewController+NSFetchedResultsControllerDelegate.swift in Sources */,
+				777F731C1EAB3D5700FF330A /* ViewController+DataManipulation.swift in Sources */,
 				77F2A70F1EAA53AC003C401F /* MWGitHubList.xcdatamodeld in Sources */,
+				777F73221EAB507A00FF330A /* GHLItemDetails+CoreDataProperties.swift in Sources */,
 				77F2A7091EAA53AC003C401F /* ViewController.swift in Sources */,
+				777F73211EAB507A00FF330A /* GHLItemDetails+CoreDataClass.swift in Sources */,
 				77F2A7071EAA53AC003C401F /* AppDelegate.swift in Sources */,
+				77A6FC911EAB582F009261A4 /* ViewController+TableView.swift in Sources */,
+				7733FA701EAB38C400BEE43A /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +428,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -397,6 +479,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
