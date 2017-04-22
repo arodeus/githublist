@@ -13,6 +13,10 @@ extension ViewController {
         self.loadItems(onlyLocalIfExists: false)
     }
     
+    func getMoreItemsFromRefreshControl() {
+        self.loadItems(onlyLocalIfExists: false)
+    }
+    
     func loadItems(onlyLocalIfExists: Bool = true) {
         var nextPage: Int = 1
         let _managerProperties = GHLDownloadManager.sharedInstance.managerProperties
@@ -68,12 +72,14 @@ extension ViewController {
                         if let _requestError = taskError {
                             print(_requestError.localizedDescription)
                             // TODO: reload tableview, show error
+                            self.refreshControl.endRefreshing()
                             return
                         }
                         
                         if let _urlResponse = taskURLResponse as? HTTPURLResponse {
                             if _urlResponse.statusCode != 200 {
                                 print("> [DEBUG] response with status code \(_urlResponse.statusCode)")
+                                self.refreshControl.endRefreshing()
                                 return
                             }
                         }
@@ -115,12 +121,14 @@ extension ViewController {
                         
                         if let _requestError = taskError {
                             print(_requestError.localizedDescription)
+                            self.refreshControl.endRefreshing()
                             return
                         }
                         
                         if let _urlResponse = taskURLResponse as? HTTPURLResponse {
                             if _urlResponse.statusCode != 200 {
                                 print("> [DEBUG] response with status code \(_urlResponse.statusCode)")
+                                self.refreshControl.endRefreshing()
                                 return
                             }
                         }

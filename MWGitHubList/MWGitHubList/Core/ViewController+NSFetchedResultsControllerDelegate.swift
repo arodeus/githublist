@@ -16,6 +16,7 @@ extension ViewController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.itemTableView.endUpdates()
+        self.refreshControl.endRefreshing()
         self.updateTitleLabel()
     }
     

@@ -13,7 +13,9 @@ class ViewController: UIViewController {
     @IBOutlet var lblItemCount: UILabel!
     @IBOutlet var itemTableView: UITableView!
     
+    var refreshControl = UIRefreshControl()
     var managedObjectContext: NSManagedObjectContext!
+    
     lazy var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult> = {
         // Initialize Fetch Request
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "GHLItemDetails")
@@ -39,6 +41,14 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor.groupTableViewBackground
         self.itemTableView.tableFooterView = UIView()
         
+        // NOTE: adding pull to refresh management
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.tintColor = UIColor.black
+        self.refreshControl.backgroundColor = UIColor.white
+        self.refreshControl.addTarget(self, action: #selector(getMoreItemsFromRefreshControl), for: UIControlEvents.valueChanged)
+        self.itemTableView.addSubview(refreshControl)
+        
+        // NOTE: loading data from CoreData store if any
         do {
             try self.fetchedResultsController.performFetch()
         } catch let fetchError {
