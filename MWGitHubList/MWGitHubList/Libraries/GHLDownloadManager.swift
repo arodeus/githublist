@@ -67,6 +67,7 @@ class GHLDownloadManager: NSObject {
                 updatedItem.gravatarID = details["gravatar_id"].string
                 
                 updatedItem.name = details["name"].string
+                updatedItem.createdAt = details["created_at"].stringValue.toDate()
                 
                 try context.save()
                 

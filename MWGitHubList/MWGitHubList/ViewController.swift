@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         // Add Sort Descriptors
         let sortDescriptor = NSSortDescriptor(key: "login", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
+        fetchRequest.fetchBatchSize = 10
         
         // Initialize Fetched Results Controller
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)

@@ -18,7 +18,7 @@ extension GHLItemDetails {
     @NSManaged public var itemID: NSNumber
     @NSManaged public var login: String
     @NSManaged public var name: String?
-    @NSManaged public var createdAt: NSDate?
+    @NSManaged public var createdAt: Date?
     @NSManaged public var email: String?
     @NSManaged public var gravatarID: String?
     @NSManaged public var avatarURL: String?
