@@ -46,8 +46,8 @@ extension ViewController {
                 titleToShow += " " + "[\(sectionItemCount) of \(totalItemCount)]"
                 
                 // updating last loading page completed successfully
-                let calculatedPage = sectionItemCount/10
-                let remainder = sectionItemCount % 10
+                let calculatedPage = sectionItemCount/kPageSize
+                let remainder = sectionItemCount % kPageSize
                 if remainder != 0 {
                     GHLDownloadManager.sharedInstance.managerProperties["next_page"] = NSNumber(value: calculatedPage)
                 } else {
@@ -65,7 +65,7 @@ extension ViewController {
     func performItemsDownloadOperation(fromPage page: Int) {
         if let _operationQueue = GHLDownloadManager.sharedInstance.operationQueue {
             _operationQueue.addOperation({
-                if let searchURL = URL(string: "https://api.github.com/search/users?q=language:java&per_page=10&page=\(page)") {
+                if let searchURL = URL(string: "https://api.github.com/search/users?q=language:java&per_page=\(kPageSize)&page=\(page)") {
                     let searchURLRequest = URLRequest(url: searchURL)
                     let task = URLSession.shared.dataTask(with: searchURLRequest, completionHandler: { (taskData, taskURLResponse, taskError) in
                         

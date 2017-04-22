@@ -10,6 +10,7 @@
 		772BEABC1EAB991800C2F294 /* String+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772BEABB1EAB991800C2F294 /* String+DateFormatter.swift */; };
 		772BEABE1EAB9B4A00C2F294 /* Date+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772BEABD1EAB9B4A00C2F294 /* Date+DateFormatter.swift */; };
 		772BEAC31EAB9FBD00C2F294 /* GHLUserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772BEAC21EAB9FBD00C2F294 /* GHLUserDetailsViewController.swift */; };
+		772BEAC71EABB98F00C2F294 /* GHLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772BEAC61EABB98F00C2F294 /* GHLConstants.swift */; };
 		7733FA701EAB38C400BEE43A /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7733FA6F1EAB38C400BEE43A /* SwiftyJSON.swift */; };
 		7733FA721EAB397E00BEE43A /* GHLDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7733FA711EAB397E00BEE43A /* GHLDownloadManager.swift */; };
 		777F731C1EAB3D5700FF330A /* ViewController+DataManipulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777F731B1EAB3D5700FF330A /* ViewController+DataManipulation.swift */; };
@@ -72,6 +73,7 @@
 		772BEABB1EAB991800C2F294 /* String+DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+DateFormatter.swift"; path = "MWGitHubList/Libraries/String+DateFormatter.swift"; sourceTree = "<group>"; };
 		772BEABD1EAB9B4A00C2F294 /* Date+DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Date+DateFormatter.swift"; path = "MWGitHubList/Libraries/Date+DateFormatter.swift"; sourceTree = "<group>"; };
 		772BEAC21EAB9FBD00C2F294 /* GHLUserDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GHLUserDetailsViewController.swift; path = Core/GHLUserDetailsViewController.swift; sourceTree = "<group>"; };
+		772BEAC61EABB98F00C2F294 /* GHLConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GHLConstants.swift; path = MWGitHubList/GHLConstants.swift; sourceTree = "<group>"; };
 		7733FA6F1EAB38C400BEE43A /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		7733FA711EAB397E00BEE43A /* GHLDownloadManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GHLDownloadManager.swift; path = MWGitHubList/Libraries/GHLDownloadManager.swift; sourceTree = "<group>"; };
 		777F731B1EAB3D5700FF330A /* ViewController+DataManipulation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ViewController+DataManipulation.swift"; path = "Core/ViewController+DataManipulation.swift"; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 		7733FA541EAB37D400BEE43A /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				772BEAC61EABB98F00C2F294 /* GHLConstants.swift */,
 				7733FA711EAB397E00BEE43A /* GHLDownloadManager.swift */,
 				777F731D1EAB3DD600FF330A /* GHLDownloadManager+FileManagement.swift */,
 				772BEABB1EAB991800C2F294 /* String+DateFormatter.swift */,
@@ -543,6 +546,7 @@
 				77E52F0D1EAB8F04002578FA /* UIImageView+WebCache.m in Sources */,
 				77E52F0C1EAB8F04002578FA /* UIImageView+HighlightedWebCache.m in Sources */,
 				77E52EFF1EAB8F04002578FA /* NSImage+WebCache.m in Sources */,
+				772BEAC71EABB98F00C2F294 /* GHLConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
