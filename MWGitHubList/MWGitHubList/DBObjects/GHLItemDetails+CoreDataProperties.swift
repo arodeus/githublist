@@ -22,12 +22,12 @@ extension GHLItemDetails {
     @NSManaged public var email: String?
     @NSManaged public var gravatarID: String?
     @NSManaged public var avatarURL: String?
-    @NSManaged public var publicGists: NSNumber?
-    @NSManaged public var followers: NSNumber?
-    @NSManaged public var following: NSNumber?
+    @NSManaged public var publicGists: NSNumber
+    @NSManaged public var followers: NSNumber
+    @NSManaged public var following: NSNumber
     @NSManaged public var bio: String?
     @NSManaged public var itemType: String?
-    @NSManaged public var publicRepos: NSNumber?
+    @NSManaged public var publicRepos: NSNumber
     @NSManaged public var company: String?
 
 }

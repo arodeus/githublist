@@ -26,23 +26,17 @@ class GHLDownloadManager: NSObject {
         }
     }
     
-    func numberOfOperations() -> Int {
-        guard let _opq = self.operationQueue else { return 0 }
-        return _opq.operationCount
+    func totalItems() -> Int {
+        if let _totalCount = self.managerProperties["total_count"] as? NSNumber {
+            return _totalCount.intValue
+        }
+        
+        return -1
     }
     
     func saveItemDetails(details: JSON, withContext context: NSManagedObjectContext) {
-        /*
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.privateQueueConcurrencyType)
-        context.persistentStoreCoordinator = appDelegate.persistentContainer.persistentStoreCoordinator
-        context.undoManager = nil
-        */
-        
         context.performAndWait {
-            print(details["login"].stringValue)
-            
-            // save/update item here
+            // save/update item
             let predicate = NSPredicate(format: "itemID == %@", argumentArray: [details["id"].stringValue])
             let theRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "GHLItemDetails")
             theRequest.predicate = predicate
@@ -52,10 +46,8 @@ class GHLDownloadManager: NSObject {
                 let updatedItem: GHLItemDetails
                 let resultSet = try context.fetch(theRequest) as! [GHLItemDetails]
                 if resultSet.count <= 0 {
-                    print("> [DEBUG] saving new item with name: \(details["login"].stringValue)")
                     updatedItem = NSEntityDescription.insertNewObject(forEntityName: "GHLItemDetails", into: context) as! GHLItemDetails
                 } else {
-                    print("> [DEBUG] updating item with name: \(resultSet[0].login)")
                     updatedItem = resultSet[0]
                 }
                 
@@ -68,6 +60,11 @@ class GHLDownloadManager: NSObject {
                 
                 updatedItem.name = details["name"].string
                 updatedItem.createdAt = details["created_at"].stringValue.toDate()
+                
+                updatedItem.publicRepos = details["public_repos"].numberValue
+                updatedItem.publicGists = details["public_gists"].numberValue
+                
+                updatedItem.bio = details["bio"].string
                 
                 try context.save()
                 

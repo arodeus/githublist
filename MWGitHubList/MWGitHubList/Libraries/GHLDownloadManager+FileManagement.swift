@@ -13,7 +13,6 @@ extension GHLDownloadManager {
         let documentDirectory = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]
         
         guard let _directoryKey = directoryKey else {
-            print("> [DEBUG] Using Document directory...")
             return documentDirectory
         }
         
@@ -38,7 +37,6 @@ extension GHLDownloadManager {
         let propertiesPath = self.getDirectoryPath() + "/" + "MWGitHutList.plist"
         if FileManager.default.fileExists(atPath: propertiesPath) {
             if let _dict = NSDictionary(contentsOfFile: propertiesPath) as? [String:Any] {
-                print("> [DEBUG]: ", _dict)
                 self.managerProperties = _dict
             }
         }

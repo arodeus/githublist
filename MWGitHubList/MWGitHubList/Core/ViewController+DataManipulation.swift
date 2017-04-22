@@ -33,6 +33,31 @@ extension ViewController {
         self.performItemsDownloadOperation(fromPage: nextPage)
     }
     
+    func updateTitleLabel() {
+        var titleToShow = "Java Developers"
+        let totalItemCount = GHLDownloadManager.sharedInstance.totalItems()
+        if totalItemCount > 0 {
+            if let sections = self.fetchedResultsController.sections {
+                let sectionItemCount = sections[0].numberOfObjects
+                titleToShow += " " + "[\(sectionItemCount) of \(totalItemCount)]"
+                
+                // updating last loading page completed successfully
+                let calculatedPage = sectionItemCount/10
+                let remainder = sectionItemCount % 10
+                if remainder != 0 {
+                    GHLDownloadManager.sharedInstance.managerProperties["next_page"] = NSNumber(value: calculatedPage)
+                } else {
+                    GHLDownloadManager.sharedInstance.managerProperties["next_page"] = NSNumber(value:( calculatedPage + 1))
+                }
+                
+                GHLDownloadManager.sharedInstance.saveDownloadManagerProperties()
+            }
+        }
+        
+        
+        self.lblItemCount.text = titleToShow
+    }
+    
     func performItemsDownloadOperation(fromPage page: Int) {
         if let _operationQueue = GHLDownloadManager.sharedInstance.operationQueue {
             _operationQueue.addOperation({
@@ -49,7 +74,6 @@ extension ViewController {
                         if let _urlResponse = taskURLResponse as? HTTPURLResponse {
                             if _urlResponse.statusCode != 200 {
                                 print("> [DEBUG] response with status code \(_urlResponse.statusCode)")
-                                // TODO: reload tableview, show error
                                 return
                             }
                         }
@@ -60,7 +84,6 @@ extension ViewController {
                                 
                                 // NOTE: update manager properties to recover status from last run
                                 GHLDownloadManager.sharedInstance.managerProperties["total_count"] = jsonObject["total_count"].numberValue
-                                GHLDownloadManager.sharedInstance.managerProperties["next_page"] = NSNumber(value: (page + 1))
                                 GHLDownloadManager.sharedInstance.saveDownloadManagerProperties()
                                 
                                 // NOTE: place operations to download user details

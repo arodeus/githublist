@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 class ViewController: UIViewController {
+    @IBOutlet var lblItemCount: UILabel!
     @IBOutlet var itemTableView: UITableView!
     
     var managedObjectContext: NSManagedObjectContext!
@@ -47,6 +48,7 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.updateTitleLabel()
         self.loadItems()
     }
 
