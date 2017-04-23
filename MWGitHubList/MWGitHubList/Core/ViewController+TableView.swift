@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK: - UITableViewDataSource, UITableViewDelegate
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func configureCell(_ cell: UITableViewCell, at indexPath: IndexPath) {
         let item = self.fetchedResultsController.object(at: indexPath) as! GHLItemDetails

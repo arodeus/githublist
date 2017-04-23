@@ -17,12 +17,13 @@ extension ViewController {
         self.loadItems(onlyLocalIfExists: false)
     }
     
+    /// Perform item loading, both online and local
+    ///
+    /// - Parameter onlyLocalIfExists: at application first run, if local database exists, use it instead of search online
     func loadItems(onlyLocalIfExists: Bool = true) {
         var nextPage: Int = 1
         let _managerProperties = GHLDownloadManager.sharedInstance.managerProperties
         if _managerProperties.count > 0 {
-            print(_managerProperties)
-            
             if onlyLocalIfExists {
                 print("> [DEBUG] load local data first")
                 return
@@ -45,7 +46,7 @@ extension ViewController {
                 let sectionItemCount = sections[0].numberOfObjects
                 titleToShow += " " + "[\(sectionItemCount) of \(totalItemCount)]"
                 
-                // updating last loading page completed successfully
+                // NOTE: updating last loading page completed successfully
                 let calculatedPage = sectionItemCount/kPageSize
                 let remainder = sectionItemCount % kPageSize
                 if remainder != 0 {
@@ -77,9 +78,13 @@ extension ViewController {
         self.present(acAlert, animated: true, completion: nil)
     }
     
-    func performItemsDownloadOperation(fromPage page: Int) {
+    /// search for users that have Java repos
+    ///
+    /// - Parameter page: starting page, default: 1
+    func performItemsDownloadOperation(fromPage page: Int = 1) {
         if let _operationQueue = GHLDownloadManager.sharedInstance.operationQueue {
             _operationQueue.addOperation({
+                // NOTE: searching for users that have Java repos
                 if let searchURL = URL(string: "https://api.github.com/search/users?q=language:java&per_page=\(kPageSize)&page=\(page)") {
                     let searchURLRequest = URLRequest(url: searchURL)
                     let task = URLSession.shared.dataTask(with: searchURLRequest, completionHandler: { (taskData, taskURLResponse, taskError) in
@@ -125,6 +130,9 @@ extension ViewController {
         }
     }
     
+    /// Download github user details
+    ///
+    /// - Parameter name: github username
     func performItemDetailsDownloadOperation(withItemName name: String) {
         if name.isEmpty {
             print("> [DEBUG] invalid item name: <empty>")

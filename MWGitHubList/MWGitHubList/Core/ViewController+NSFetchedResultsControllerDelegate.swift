@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+// MARK: - NSFetchedResultsControllerDelegate functions
 extension ViewController: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.itemTableView.beginUpdates()

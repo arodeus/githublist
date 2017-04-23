@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+/// Manage download operations and local storage
 class GHLDownloadManager: NSObject {
     static let sharedInstance = GHLDownloadManager()
     var operationQueue: OperationQueue?
