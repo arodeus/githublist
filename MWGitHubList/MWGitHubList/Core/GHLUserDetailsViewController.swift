@@ -18,9 +18,18 @@ extension GHLUserDetailsViewController {
         guard let _emailAddress = sender.title(for: .normal) else { return }
         if _emailAddress.isEmpty { return }
         
-        if let emailURL = URL(string: "mailto:\(_emailAddress)") {
+        if let emailURL = URL(string: "mailto://\(_emailAddress)") {
             // open email outside the current application
-            UIApplication.shared.open(emailURL, options: [:], completionHandler: nil)
+            if UIApplication.shared.canOpenURL(emailURL) {
+                UIApplication.shared.open(emailURL, options: [:], completionHandler: nil)
+            } else {
+                let message = "I was not able to open the default e-mail app"
+                let acAlert = UIAlertController(title: "Sorry!", message: message, preferredStyle: UIAlertControllerStyle.alert)
+                let cancelAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel)
+                acAlert.addAction(cancelAction)
+                
+                self.present(acAlert, animated: true, completion: nil)
+            }
         }
     }
 }
@@ -34,6 +43,8 @@ class GHLUserDetailsViewController: UIViewController {
     
     @IBOutlet var lblPublicRepo: UILabel!
     @IBOutlet var lblPublicGists: UILabel!
+    @IBOutlet var lblFollowers: UILabel!
+    @IBOutlet var lblFollowing: UILabel!
     @IBOutlet var txtBio: UITextView!
     @IBOutlet var btnEmail: UIButton!
 
@@ -54,6 +65,8 @@ class GHLUserDetailsViewController: UIViewController {
         self.lblRealName.text = self.currentItemDetails.name
         self.lblPublicRepo.text = "\(self.currentItemDetails.publicRepos.intValue) Repos"
         self.lblPublicGists.text = "\(self.currentItemDetails.publicRepos.intValue) Gists"
+        self.lblFollowers.text = "\(self.currentItemDetails.followers.intValue) Followers"
+        self.lblFollowers.text = "\(self.currentItemDetails.following.intValue) Following"
         
         if let _avatarURLString = self.currentItemDetails.avatarURL {
             let imageURL = URL(string: _avatarURLString)

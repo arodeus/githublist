@@ -63,6 +63,8 @@ class GHLDownloadManager: NSObject {
                 
                 updatedItem.publicRepos = details["public_repos"].numberValue
                 updatedItem.publicGists = details["public_gists"].numberValue
+                updatedItem.followers = details["followers"].numberValue
+                updatedItem.following = details["following"].numberValue
                 
                 updatedItem.bio = details["bio"].string
                 

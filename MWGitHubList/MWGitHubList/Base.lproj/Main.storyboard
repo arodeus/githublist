@@ -157,32 +157,58 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="E-Mail"/>
+                                <connections>
+                                    <action selector="openEmailAppWithSender:" destination="qNj-Ud-Ocv" eventType="touchUpInside" id="bUM-Bm-B5b"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" text="User didn't insert a Bio." translatesAutoresizingMaskIntoConstraints="NO" id="dFa-wu-3E1">
-                                <rect key="frame" x="16" y="156" width="343" height="427"/>
+                                <rect key="frame" x="16" y="194" width="343" height="389"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9Ue-af-Mr0">
+                                <rect key="frame" x="16" y="156" width="343" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Follower(s)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gQ-EY-LOM">
+                                        <rect key="frame" x="0.0" y="6.5" width="171.5" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Following" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="blp-wW-UgQ">
+                                        <rect key="frame" x="171.5" y="6.5" width="171.5" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7w0-e6-5f9"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Rhj-bF-j4c" firstAttribute="leading" secondItem="c73-dw-FJg" secondAttribute="trailing" constant="8" id="08l-QI-3P8"/>
                             <constraint firstItem="CYm-Ae-Ohh" firstAttribute="leading" secondItem="c73-dw-FJg" secondAttribute="trailing" constant="8" id="3lx-yY-wX5"/>
+                            <constraint firstItem="9Ue-af-Mr0" firstAttribute="top" secondItem="P7d-4j-W5J" secondAttribute="bottom" constant="8" id="BPo-cg-6TR"/>
+                            <constraint firstItem="9Ue-af-Mr0" firstAttribute="leading" secondItem="tDs-PX-H5J" secondAttribute="leadingMargin" id="CMZ-mR-8cr"/>
                             <constraint firstItem="c73-dw-FJg" firstAttribute="top" secondItem="qht-tl-BsM" secondAttribute="bottom" constant="20" id="EXV-wI-h5C"/>
                             <constraint firstItem="Rhj-bF-j4c" firstAttribute="top" secondItem="CYm-Ae-Ohh" secondAttribute="bottom" constant="8" id="Iwx-Xt-kta"/>
+                            <constraint firstItem="dFa-wu-3E1" firstAttribute="top" secondItem="9Ue-af-Mr0" secondAttribute="bottom" constant="8" id="LaT-lQ-8Kd"/>
                             <constraint firstItem="P7d-4j-W5J" firstAttribute="top" secondItem="Rhj-bF-j4c" secondAttribute="bottom" constant="8" id="LhR-I7-iy4"/>
-                            <constraint firstItem="6fd-OW-uy1" firstAttribute="top" secondItem="dFa-wu-3E1" secondAttribute="bottom" constant="20" id="MQw-Yd-RNC"/>
                             <constraint firstItem="CYm-Ae-Ohh" firstAttribute="top" secondItem="Iah-cU-hNF" secondAttribute="bottom" id="MkE-MV-epS"/>
-                            <constraint firstItem="dFa-wu-3E1" firstAttribute="trailing" secondItem="tDs-PX-H5J" secondAttribute="trailingMargin" id="Uxm-NF-fSX"/>
-                            <constraint firstItem="dFa-wu-3E1" firstAttribute="top" secondItem="P7d-4j-W5J" secondAttribute="bottom" constant="8" id="VJp-wM-kr5"/>
+                            <constraint firstItem="6fd-OW-uy1" firstAttribute="top" secondItem="dFa-wu-3E1" secondAttribute="bottom" constant="20" id="Om1-zV-erh"/>
                             <constraint firstItem="Iah-cU-hNF" firstAttribute="leading" secondItem="c73-dw-FJg" secondAttribute="trailing" constant="8" id="Vfj-ak-Hxs"/>
                             <constraint firstItem="Iah-cU-hNF" firstAttribute="trailing" secondItem="tDs-PX-H5J" secondAttribute="trailingMargin" id="Y4y-rd-bcw"/>
+                            <constraint firstItem="dFa-wu-3E1" firstAttribute="trailing" secondItem="tDs-PX-H5J" secondAttribute="trailingMargin" id="akr-nC-CNW"/>
                             <constraint firstItem="Iah-cU-hNF" firstAttribute="top" secondItem="qht-tl-BsM" secondAttribute="bottom" constant="20" id="biw-t8-eQW"/>
+                            <constraint firstItem="9Ue-af-Mr0" firstAttribute="trailing" secondItem="tDs-PX-H5J" secondAttribute="trailingMargin" id="cwQ-Mf-Yc5"/>
                             <constraint firstItem="Rhj-bF-j4c" firstAttribute="trailing" secondItem="tDs-PX-H5J" secondAttribute="trailingMargin" id="dlY-jl-LEA"/>
                             <constraint firstItem="P7d-4j-W5J" firstAttribute="leading" secondItem="c73-dw-FJg" secondAttribute="trailing" constant="8" id="eRw-NE-0nB"/>
                             <constraint firstItem="c73-dw-FJg" firstAttribute="leading" secondItem="tDs-PX-H5J" secondAttribute="leadingMargin" id="iRR-kj-U1x"/>
-                            <constraint firstItem="dFa-wu-3E1" firstAttribute="leading" secondItem="tDs-PX-H5J" secondAttribute="leadingMargin" id="jyN-w0-tVf"/>
+                            <constraint firstItem="dFa-wu-3E1" firstAttribute="leading" secondItem="tDs-PX-H5J" secondAttribute="leadingMargin" id="kwn-AS-Dfp"/>
                             <constraint firstItem="P7d-4j-W5J" firstAttribute="trailing" secondItem="tDs-PX-H5J" secondAttribute="trailingMargin" id="uoS-Vz-l1M"/>
                             <constraint firstItem="CYm-Ae-Ohh" firstAttribute="trailing" secondItem="tDs-PX-H5J" secondAttribute="trailingMargin" id="vUe-RG-Qtk"/>
                         </constraints>
@@ -199,6 +225,8 @@
                     <connections>
                         <outlet property="btnEmail" destination="P7d-4j-W5J" id="iTp-QH-SGP"/>
                         <outlet property="itemImageView" destination="c73-dw-FJg" id="sHc-Um-hvP"/>
+                        <outlet property="lblFollowers" destination="2gQ-EY-LOM" id="w3C-WH-hxB"/>
+                        <outlet property="lblFollowing" destination="blp-wW-UgQ" id="hHN-0m-0VG"/>
                         <outlet property="lblLoginName" destination="Iah-cU-hNF" id="5z0-n7-SJZ"/>
                         <outlet property="lblPublicGists" destination="GJZ-LK-Rwx" id="IP0-oO-aaK"/>
                         <outlet property="lblPublicRepo" destination="cGb-tT-BLi" id="t66-Sr-5Po"/>
