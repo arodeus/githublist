@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet var lblItemCount: UILabel!
     @IBOutlet var itemTableView: UITableView!
     
+    var hasError = false
     var refreshControl = UIRefreshControl()
     var managedObjectContext: NSManagedObjectContext!
     
@@ -21,7 +22,7 @@ class ViewController: UIViewController {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "GHLItemDetails")
         
         // Add Sort Descriptors
-        let sortDescriptor = NSSortDescriptor(key: "login", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "sortableLogin", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         fetchRequest.fetchBatchSize = 10
         

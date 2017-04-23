@@ -16,6 +16,7 @@ extension GHLItemDetails {
     }
 
     @NSManaged public var itemID: NSNumber
+    @NSManaged public var sortableLogin: String
     @NSManaged public var login: String
     @NSManaged public var name: String?
     @NSManaged public var createdAt: Date?

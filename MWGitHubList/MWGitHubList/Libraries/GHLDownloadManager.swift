@@ -53,6 +53,7 @@ class GHLDownloadManager: NSObject {
                 
                 updatedItem.itemID = details["id"].numberValue
                 updatedItem.login = details["login"].stringValue
+                updatedItem.sortableLogin = details["login"].stringValue.lowercased()
                 
                 updatedItem.email = details["email"].string
                 updatedItem.avatarURL = details["avatar_url"].string
