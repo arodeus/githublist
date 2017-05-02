@@ -12,14 +12,14 @@ import CoreData
 /// Manage download operations and local storage
 class GHLDownloadManager: NSObject {
     static let sharedInstance = GHLDownloadManager()
-    var operationQueue: OperationQueue?
+    // var operationQueue: OperationQueue?
     
     var managerProperties = [String:Any]()
     
     // NOTE: prevent use of init() for singleton with private modifier
     private override init() {
-        self.operationQueue = OperationQueue()
-        self.operationQueue?.maxConcurrentOperationCount = 1
+        // self.operationQueue = OperationQueue()
+        // self.operationQueue?.maxConcurrentOperationCount = 1
     }
     
     func totalItems() -> Int {

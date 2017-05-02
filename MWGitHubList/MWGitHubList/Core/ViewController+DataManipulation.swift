@@ -80,51 +80,47 @@ extension ViewController {
     ///
     /// - Parameter page: starting page, default: 1
     func performItemsDownloadOperation(fromPage page: Int = 1) {
-        if let _operationQueue = GHLDownloadManager.sharedInstance.operationQueue {
-            _operationQueue.addOperation({
-                // NOTE: searching for users that have Java repos
-                if let searchURL = URL(string: "https://api.github.com/search/users?q=language:java&per_page=\(kPageSize)&page=\(page)") {
-                    let searchURLRequest = URLRequest(url: searchURL)
-                    let task = URLSession.shared.dataTask(with: searchURLRequest, completionHandler: { (taskData, taskURLResponse, taskError) in
-                        
-                        if let _requestError = taskError {
-                            print(_requestError.localizedDescription)
-                            DispatchQueue.main.async {
-                                self.showDownloadError()
-                            }
-                            return
+        // NOTE: searching for users that have Java repos
+        if let searchURL = URL(string: "https://api.github.com/search/users?q=language:java&per_page=\(kPageSize)&page=\(page)") {
+            let searchURLRequest = URLRequest(url: searchURL)
+            let task = URLSession.shared.dataTask(with: searchURLRequest, completionHandler: { (taskData, taskURLResponse, taskError) in
+                
+                if let _requestError = taskError {
+                    print(_requestError.localizedDescription)
+                    DispatchQueue.main.async {
+                        self.showDownloadError()
+                    }
+                    return
+                }
+                
+                if let _urlResponse = taskURLResponse as? HTTPURLResponse {
+                    if _urlResponse.statusCode != 200 {
+                        print("> [DEBUG] response with status code \(_urlResponse.statusCode)")
+                        DispatchQueue.main.async {
+                            self.showDownloadError()
                         }
+                        return
+                    }
+                }
+                
+                do {
+                    if let _data = taskData {
+                        let jsonObject = try JSON(data: _data)
                         
-                        if let _urlResponse = taskURLResponse as? HTTPURLResponse {
-                            if _urlResponse.statusCode != 200 {
-                                print("> [DEBUG] response with status code \(_urlResponse.statusCode)")
-                                DispatchQueue.main.async {
-                                    self.showDownloadError()
-                                }
-                                return
-                            }
-                        }
+                        // NOTE: update manager properties to recover status from last run
+                        GHLDownloadManager.sharedInstance.managerProperties["total_count"] = jsonObject["total_count"].numberValue
+                        GHLDownloadManager.sharedInstance.saveDownloadManagerProperties()
                         
-                        do {
-                            if let _data = taskData {
-                                let jsonObject = try JSON(data: _data)
-                                
-                                // NOTE: update manager properties to recover status from last run
-                                GHLDownloadManager.sharedInstance.managerProperties["total_count"] = jsonObject["total_count"].numberValue
-                                GHLDownloadManager.sharedInstance.saveDownloadManagerProperties()
-                                
-                                // NOTE: place operations to download user details
-                                for item in jsonObject["items"].arrayValue {
-                                    self.performItemDetailsDownloadOperation(withItemName: item["login"].stringValue)
-                                }
-                            }
-                        } catch let jsonError {
-                            print(jsonError.localizedDescription)
+                        // NOTE: place operations to download user details
+                        for item in jsonObject["items"].arrayValue {
+                            self.performItemDetailsDownloadOperation(withItemName: item["login"].stringValue)
                         }
-                    })
-                    task.resume()
+                    }
+                } catch let jsonError {
+                    print(jsonError.localizedDescription)
                 }
             })
+            task.resume()
         }
     }
     
@@ -137,41 +133,37 @@ extension ViewController {
             return
         }
         
-        if let _operationQueue = GHLDownloadManager.sharedInstance.operationQueue {
-            _operationQueue.addOperation {
-                if let itemDetailsURL = URL(string: "https://api.github.com/users/\(name)") {
-                    let itemDetailsURLRequest = URLRequest(url: itemDetailsURL)
-                    let task = URLSession.shared.dataTask(with: itemDetailsURLRequest, completionHandler: { (taskData, taskURLResponse, taskError) in
-                        
-                        if let _requestError = taskError {
-                            print(_requestError.localizedDescription)
-                            DispatchQueue.main.async {
-                                self.showDownloadError()
-                            }
-                            return
-                        }
-                        
-                        if let _urlResponse = taskURLResponse as? HTTPURLResponse {
-                            if _urlResponse.statusCode != 200 {
-                                DispatchQueue.main.async {
-                                    self.showDownloadError()
-                                }
-                                return
-                            }
-                        }
-                        
-                        do {
-                            if let _data = taskData {
-                                let jsonObject = try JSON(data: _data)
-                                GHLDownloadManager.sharedInstance.saveItemDetails(details: jsonObject, withContext: self.managedObjectContext)
-                            }
-                        } catch let jsonError {
-                            print(jsonError.localizedDescription)
-                        }
-                    })
-                    task.resume()
+        if let itemDetailsURL = URL(string: "https://api.github.com/users/\(name)") {
+            let itemDetailsURLRequest = URLRequest(url: itemDetailsURL)
+            let task = URLSession.shared.dataTask(with: itemDetailsURLRequest, completionHandler: { (taskData, taskURLResponse, taskError) in
+                
+                if let _requestError = taskError {
+                    print(_requestError.localizedDescription)
+                    DispatchQueue.main.async {
+                        self.showDownloadError()
+                    }
+                    return
                 }
-            }
+                
+                if let _urlResponse = taskURLResponse as? HTTPURLResponse {
+                    if _urlResponse.statusCode != 200 {
+                        DispatchQueue.main.async {
+                            self.showDownloadError()
+                        }
+                        return
+                    }
+                }
+                
+                do {
+                    if let _data = taskData {
+                        let jsonObject = try JSON(data: _data)
+                        GHLDownloadManager.sharedInstance.saveItemDetails(details: jsonObject, withContext: self.managedObjectContext)
+                    }
+                } catch let jsonError {
+                    print(jsonError.localizedDescription)
+                }
+            })
+            task.resume()
         }
     }
 }
