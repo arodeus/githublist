@@ -22,8 +22,6 @@ extension ViewController: NSFetchedResultsControllerDelegate {
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        print("> [DEBUG] updating object at", indexPath ?? "<EMPTY>")
-        
         switch type {
         case .update:
             if let _indexPath = indexPath {
@@ -38,7 +36,7 @@ extension ViewController: NSFetchedResultsControllerDelegate {
             }
             break
         default:
-            print("> [DEBUG] action not configured")
+            ()
         }
     }
 }

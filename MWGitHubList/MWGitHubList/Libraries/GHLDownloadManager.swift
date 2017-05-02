@@ -18,13 +18,8 @@ class GHLDownloadManager: NSObject {
     
     // NOTE: prevent use of init() for singleton with private modifier
     private override init() {
-        print("GHLDownloadManager:init")
-        
-        if self.operationQueue == nil {
-            print("GHLDownloadManager -> creating operation queue")
-            self.operationQueue = OperationQueue()
-            self.operationQueue?.maxConcurrentOperationCount = 1
-        }
+        self.operationQueue = OperationQueue()
+        self.operationQueue?.maxConcurrentOperationCount = 1
     }
     
     func totalItems() -> Int {

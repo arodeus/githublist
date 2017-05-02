@@ -25,7 +25,6 @@ extension ViewController {
         let _managerProperties = GHLDownloadManager.sharedInstance.managerProperties
         if _managerProperties.count > 0 {
             if onlyLocalIfExists {
-                print("> [DEBUG] load local data first")
                 return
             }
             
@@ -34,7 +33,6 @@ extension ViewController {
             }
         }
         
-        print("> [DEBUG] download remote data")
         self.performItemsDownloadOperation(fromPage: nextPage)
     }
     
@@ -155,7 +153,6 @@ extension ViewController {
                         
                         if let _urlResponse = taskURLResponse as? HTTPURLResponse {
                             if _urlResponse.statusCode != 200 {
-                                print("> [DEBUG] response with status code \(_urlResponse.statusCode)")
                                 DispatchQueue.main.async {
                                     self.showDownloadError()
                                 }

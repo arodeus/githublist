@@ -25,7 +25,6 @@ extension GHLDownloadManager {
                     print(createDirectoryError.localizedDescription)
                 }
             } else {
-                print("> [DEBUG] directory not found! Using Document directory...")
                 return documentDirectory
             }
         }
@@ -34,7 +33,7 @@ extension GHLDownloadManager {
     }
     
     func loadDownloadManagerProperties() {
-        let propertiesPath = self.getDirectoryPath() + "/" + "MWGitHutList.plist"
+        let propertiesPath = self.getDirectoryPath() + "/" + "MWGitHubList.plist"
         if FileManager.default.fileExists(atPath: propertiesPath) {
             if let _dict = NSDictionary(contentsOfFile: propertiesPath) as? [String:Any] {
                 self.managerProperties = _dict
@@ -44,7 +43,7 @@ extension GHLDownloadManager {
     
     func saveDownloadManagerProperties() {
         do {
-            let propertiesPath = self.getDirectoryPath() + "/" + "MWGitHutList.plist"
+            let propertiesPath = self.getDirectoryPath() + "/" + "MWGitHubList.plist"
             if FileManager.default.fileExists(atPath: propertiesPath) {
                 try FileManager.default.removeItem(atPath: propertiesPath)
             }
